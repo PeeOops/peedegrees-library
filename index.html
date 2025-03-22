@@ -13,26 +13,28 @@
     </header>
     <div class="main">
         <div class="toolbars">
-            <button>New Book</button>
-            <div class="filters">
-                <p>Filters: </p>
-                <div class="new">
-                    <input type="radio" name="choose" id="new">
-                    <label for="new">New</label>
+            <button id="new-btn">New Book</button>
+            <form action="" method="" id="filter-form">
+                <div class="filters">
+                    <p>Filters: </p>
+                    <div class="new">
+                        <input type="radio" name="choose" id="new">
+                        <label for="new">New</label>
+                    </div>
+                    <div class="read">
+                        <input type="radio" name="choose" id="read">
+                        <label for="read">Read</label>
+                    </div>
+                    <div class="unread">
+                        <input type="radio" name="choose" id="unread">
+                        <label for="unread">Unread</label>
+                    </div>
                 </div>
-                <div class="read">
-                    <input type="radio" name="choose" id="read">
-                    <label for="read">Read</label>
-                </div>
-                <div class="unread">
-                    <input type="radio" name="choose" id="unread">
-                    <label for="unread">Unread</label>
-                </div>
-            </div>
-            <button>Apply</button>
-            <button>Clear</button>
+                <button type="submit" id="apply-btn">Apply</button>
+                <button type="button" id="clear-btn">Clear</button>
+            </form>
         </div>
-        <div class="books-container">
+        <div class="books-container" id="books-container">
             <div class="first">
                 <div class="zoom">
                     <div class="book">
@@ -187,7 +189,7 @@
                 
             </div>
             <div class="view">
-                <p>View More</p>
+                <p id="view-btn">View More</p>
             </div>
             
         </div>
@@ -195,5 +197,7 @@
     <footer>
         <p>Copyright &copy; PeeDegrees</p>
     </footer>
+
+    <script src="js/script.js"></script>
 </body>
 </html>

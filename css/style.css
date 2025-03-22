@@ -49,6 +49,12 @@ body{
     box-shadow: 3px 3px rgba(0,0,0,0.2);
 }
 
+.toolbars form{
+    display: flex;
+    flex-direction: row;
+    gap: 12px;
+}
+
 .toolbars button{
     background-color: var(--khaki);
     padding: 4px 8px;
@@ -139,6 +145,10 @@ body{
     color: var(--dark-brown);
     box-shadow: 3px 3px rgba(0,0,0,0.4);
     cursor: pointer;
+}
+
+.view p:hover{
+    color: var(--seashell);
 }
 
 footer{
