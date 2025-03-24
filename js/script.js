@@ -7,7 +7,6 @@ const viewMoreBtn = document.getElementById("view-btn")
 const closeModalBtn = document.getElementById("close-modal");
 const modalContent = document.getElementById("modal");
 const inputForm = document.getElementById("input-form");
-const firstRow = document.getElementById("input-row");
 
 // Dialog Modal
 newBookBtn.addEventListener("click", () => {
@@ -71,15 +70,18 @@ inputForm.addEventListener("submit", (event) => {
 })
 
 // Temporary Listed Books
-addBookToLibrary("J.J.K Rowling", "Harry Potter", "Magic");
-addBookToLibrary("J.J.K Rowling", "Harry Potter", "Magic");
-addBookToLibrary("J.J.K Rowling", "Harry Potter", "Magic");
-addBookToLibrary("J.J.K Rowling", "Harry Potter", "Magic");
-addBookToLibrary("J.J.K Rowling", "Harry Potter", "Magic");
-addBookToLibrary("J.J.K Rowling", "Harry Potter", "Magic");
-addBookToLibrary("J.J.K Rowling", "Harry Potter", "Magic");
-addBookToLibrary("J.J.K Rowling", "Harry Potter", "Magic");
-addBookToLibrary("J.J.K Rowling", "Harry Potter", "Magic");
+addBookToLibrary("J.K. Rowling", "Harry Potter and the Sorcerer's Stone", "The magic begins.");
+addBookToLibrary("George Orwell", "1984", "Big Brother is watching.");
+addBookToLibrary("J.R.R. Tolkien", "The Hobbit", "In a hole in the ground there lived a hobbit.");
+addBookToLibrary("Jane Austen", "Pride and Prejudice", "It is a truth universally acknowledged, that a single man in possession of a good fortune, must be in want of a wife.");
+addBookToLibrary("F. Scott Fitzgerald", "The Great Gatsby", "In the end, we will remember not the words of our enemies, but the silence of our friends.");
+addBookToLibrary("Harper Lee", "To Kill a Mockingbird", "You never really understand a person until you consider things from his point of view.");
+addBookToLibrary("Mark Twain", "The Adventures of Huckleberry Finn", "A story of a boy and a runaway slave on a journey down the Mississippi River.");
+addBookToLibrary("Suzanne Collins", "The Hunger Games", "May the odds be ever in your favor.");
+addBookToLibrary("Ernest Hemingway", "The Old Man and the Sea", "A story of courage, endurance, and friendship with the sea.");
+addBookToLibrary("Stephen King", "The Shining", "All work and no play makes Jack a dull boy.");
+
+
 
 // View Books
 
@@ -121,12 +123,9 @@ function view() {
 view();
 
 
-
 // Filter Books
 
 // Clear Books Filter
-
-// View More Books
 
 
 
