@@ -180,7 +180,7 @@ footer{
     gap: 5px;
 }
 
-.close-modal-button, form button {
+.close-modal-button, .input-form button {
     margin-top: 10px;
     background-color: red;
     color: var(--seashell);
@@ -189,7 +189,7 @@ footer{
     cursor: pointer;
 }
 
-form button{
+.input-form button{
     background-color: green;
 }
 
