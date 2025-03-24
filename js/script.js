@@ -6,6 +6,7 @@ const booksContainer = document.getElementById("books-container");
 const viewMoreBtn = document.getElementById("view-btn")
 const closeModalBtn = document.getElementById("close-modal");
 const modalContent = document.getElementById("modal");
+const inputForm = document.getElementById("input-form")
 
 // Dialog Modal
 newBookBtn.addEventListener("click", () => {
@@ -15,6 +16,8 @@ newBookBtn.addEventListener("click", () => {
 closeModalBtn.addEventListener("click", () => {
     modalContent.close();
 })
+
+
 
 
 // Library Array
@@ -27,6 +30,7 @@ function Book(author, title, tagline) {
     if(!new.target){
         throw Error("You must use the new operator to call the constructor");
     }
+    
     this.bookId = ++bookId;
     this.author = author;
     this.title = title;
@@ -39,10 +43,30 @@ function addBookToLibrary (author, title, tagline) {
     myLibrary.push(newBook);
 }
 
-addBookToLibrary("a","2","3");
-addBookToLibrary("a","2","4");
-addBookToLibrary("a","2","5");
-console.log(myLibrary[0],myLibrary[1],myLibrary[2])
+// Form Input
+inputForm.addEventListener("submit", (event) => {
+    // Prevent form from submitting
+    event.preventDefault();
+
+    // Value declaration
+    const author = document.getElementById("author").value;
+    const title = document.getElementById("title").value;
+    const tagline = document.getElementById("tagline").value;
+
+    // Add Book
+    addBookToLibrary(author, title, tagline);
+
+    // Clear input values
+    author = "";
+    title = "";
+    tagline = "";
+
+    // Close modal after submit
+    modalContent.close();
+
+})
+
+
 
 // Filter Books
 
