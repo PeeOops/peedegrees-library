@@ -162,3 +162,37 @@ footer{
     font-weight: bold;
     margin-top: 15px;
 }
+
+#modal{
+    margin: 0 auto;
+    font-family: "Gidole", sans-serif;
+}
+
+.modal-content{
+    display: flex;
+    flex-direction: column;
+    padding: 30px 30px;
+}
+
+.modal-content form{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.close-modal-button, form button {
+    margin-top: 10px;
+    background-color: red;
+    color: var(--seashell);
+    border: none;
+    padding: 8px 16px;
+    cursor: pointer;
+}
+
+form button{
+    background-color: green;
+}
+
+.close-modal-button:hover {
+    background-color: #e53935;
+}
