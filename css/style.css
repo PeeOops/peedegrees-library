@@ -77,7 +77,7 @@ body{
     width: 80%;
 }
 
-.first, .second, .third{
+.first{
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
