@@ -24,7 +24,7 @@ let bookId = 0;
 
 // Book Constructor
 
-function Book(author, title, tagline) {
+function Book(author, title, tagline,pages) {
     if(!new.target){
         throw Error("You must use the new operator to call the constructor");
     }
@@ -33,11 +33,12 @@ function Book(author, title, tagline) {
     this.author = author;
     this.title = title;
     this.tagline = tagline;
+    this.pages = pages;
 }
 
 // New Book
-function addBookToLibrary (author, title, tagline) {
-    const newBook = new Book(author, title, tagline);
+function addBookToLibrary (author, title, tagline, pages) {
+    const newBook = new Book(author, title, tagline, pages);
     myLibrary.push(newBook);
 }
 
@@ -52,14 +53,16 @@ inputForm.addEventListener("submit", (event) => {
     const author = document.getElementById("author");
     const title = document.getElementById("title");
     const tagline = document.getElementById("tagline");
+    const pages = document.getElementById("pages");
 
     // Add Book
-    addBookToLibrary(author.value, title.value, tagline.value);
+    addBookToLibrary(author.value, title.value, tagline.value, pages.value);
 
     // Clear input values
     author.value = "";
     title.value = "";
     tagline.value = "";
+    pages.value = "";
 
     // Close modal after submit
     modalContent.close();
@@ -70,16 +73,16 @@ inputForm.addEventListener("submit", (event) => {
 })
 
 // Temporary Listed Books
-addBookToLibrary("J.K. Rowling", "Harry Potter and the Sorcerer's Stone", "The magic begins.");
-addBookToLibrary("George Orwell", "1984", "Big Brother is watching.");
-addBookToLibrary("J.R.R. Tolkien", "The Hobbit", "In a hole in the ground there lived a hobbit.");
-addBookToLibrary("Jane Austen", "Pride and Prejudice", "It is a truth universally acknowledged, that a single man in possession of a good fortune, must be in want of a wife.");
-addBookToLibrary("F. Scott Fitzgerald", "The Great Gatsby", "In the end, we will remember not the words of our enemies, but the silence of our friends.");
-addBookToLibrary("Harper Lee", "To Kill a Mockingbird", "You never really understand a person until you consider things from his point of view.");
-addBookToLibrary("Mark Twain", "The Adventures of Huckleberry Finn", "A story of a boy and a runaway slave on a journey down the Mississippi River.");
-addBookToLibrary("Suzanne Collins", "The Hunger Games", "May the odds be ever in your favor.");
-addBookToLibrary("Ernest Hemingway", "The Old Man and the Sea", "A story of courage, endurance, and friendship with the sea.");
-addBookToLibrary("Stephen King", "The Shining", "All work and no play makes Jack a dull boy.");
+addBookToLibrary("J.K. Rowling", "Harry Potter and the Sorcerer's Stone", "The magic begins.", 309);
+addBookToLibrary("George Orwell", "1984", "Big Brother is watching.", 328);
+addBookToLibrary("J.R.R. Tolkien", "The Hobbit", "In a hole in the ground there lived a hobbit.", 310);
+addBookToLibrary("Jane Austen", "Pride and Prejudice", "It is a truth universally acknowledged, that a single man in possession of a good fortune, must be in want of a wife.", 279);
+addBookToLibrary("F. Scott Fitzgerald", "The Great Gatsby", "In the end, we will remember not the words of our enemies, but the silence of our friends.", 180);
+addBookToLibrary("Harper Lee", "To Kill a Mockingbird", "You never really understand a person until you consider things from his point of view.", 281);
+addBookToLibrary("Mark Twain", "The Adventures of Huckleberry Finn", "A story of a boy and a runaway slave on a journey down the Mississippi River.", 366);
+addBookToLibrary("Suzanne Collins", "The Hunger Games", "May the odds be ever in your favor.", 374);
+addBookToLibrary("Ernest Hemingway", "The Old Man and the Sea", "A story of courage, endurance, and friendship with the sea.", 127);
+addBookToLibrary("Stephen King", "The Shining", "All work and no play makes Jack a dull boy.", 659);
 
 
 
@@ -110,6 +113,7 @@ function view() {
                     <p>${myLibrary[i].author}</p>
                     <p>${myLibrary[i].title}</p>
                     <p>${myLibrary[i].tagline}</p>
+                    <p>${myLibrary[i].pages}</p>
                 </div>
                 <button class="zoom-button">Read</button>
             `;
