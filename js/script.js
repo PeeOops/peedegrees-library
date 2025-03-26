@@ -58,7 +58,7 @@ inputForm.addEventListener("submit", (event) => {
     const read = false;
 
     // Validate input
-    if(!author || !title || !tagline || isNaN(pages)){
+    if(!author.value || !title.value || !tagline.value || isNaN(pages.value) || parseInt(pages.value) <= 0){
         alert("Please fill out all fields correcty.");
         return;
     }
