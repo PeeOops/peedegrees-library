@@ -96,14 +96,14 @@ addBookToLibrary("Stephen King", "The Shining", "All work and no play makes Jack
 
 // View Books
 
-function view() {
+function view(filteredBooks = myLibrary) {
     // Clear the container before appending new books
     booksContainer.innerHTML = "";
 
-    if (myLibrary.length > 0) {
+    if (filteredBooks.length > 0) {
         let firstDiv;
         // Loop through the library and create a new "first" div for every 6 books
-        for (let i = 0; i < myLibrary.length; i++) {
+        for (let i = 0; i < filteredBooks.length; i++) {
             // Create a new "first" div every 6 books
             if (i % 6 === 0) {
                 firstDiv = document.createElement('div');
@@ -118,14 +118,14 @@ function view() {
             // Add content for the book
             bookDiv.innerHTML = `
                 <div class="book">
-                    <p>${myLibrary[i].author}</p>
-                    <p>${myLibrary[i].title}</p>
-                    <p>${myLibrary[i].tagline}</p>
-                    <p>${myLibrary[i].pages}</p>
+                    <p>${filteredBooks[i].author}</p>
+                    <p>${filteredBooks[i].title}</p>
+                    <p>${filteredBooks[i].tagline}</p>
+                    <p>${filteredBooks[i].pages}</p>
                 </div>
                 <div class="zoom-button">
-                    <button id="read-button-${myLibrary[i].bookId}">Read</button>
-                    <button id="delete-button-${myLibrary[i].bookId}">Delete</button>
+                    <button id="read-button-${filteredBooks[i].bookId}">Read</button>
+                    <button id="delete-button-${filteredBooks[i].bookId}">Delete</button>
                 </div>
             `;
 
@@ -133,31 +133,58 @@ function view() {
             firstDiv.appendChild(bookDiv);
 
             // Read Button
-            const readButton = document.getElementById(`read-button-${myLibrary[i].bookId}`);
+            const readButton = document.getElementById(`read-button-${filteredBooks[i].bookId}`);
             readButton.addEventListener("click", () => {
-                if(myLibrary[i].read === false){
-                    myLibrary[i].read = true;
+                if (filteredBooks[i].read === false) {
+                    filteredBooks[i].read = true;
                     readButton.innerText = "Unread";
-                }else{
-                    myLibrary[i].read = false;
+                } else {
+                    filteredBooks[i].read = false;
                     readButton.innerText = "Read";
                 }
-            })
+            });
 
             // Delete Button
-            const deleteButton = document.getElementById(`delete-button-${myLibrary[i].bookId}`);
+            const deleteButton = document.getElementById(`delete-button-${filteredBooks[i].bookId}`);
             deleteButton.addEventListener("click", () => {
-                const bookIndex = myLibrary.findIndex(book => book.bookId === myLibrary[i].bookId);
-                myLibrary.splice(bookIndex,1);
+                const bookIndex = myLibrary.findIndex(book => book.bookId === filteredBooks[i].bookId);
+                myLibrary.splice(bookIndex, 1);
                 view();
-            })
+            });
         }
     }
-
-
-
-
 }
+
+// Apply Filter
+applyFilterBtn.addEventListener("click", (event) => {
+    event.preventDefault(); // Prevent form submission
+
+    const selectedFilter = document.querySelector('input[name="choose"]:checked');
+
+    if (selectedFilter) {
+        const filterValue = selectedFilter.id;
+
+        let filteredBooks;
+        if (filterValue === "read") {
+            filteredBooks = myLibrary.filter(book => book.read === true);
+        } else if (filterValue === "unread") {
+            filteredBooks = myLibrary.filter(book => book.read === false);
+        } else {
+            filteredBooks = myLibrary;
+        }
+
+        view(filteredBooks);
+    } else {
+        alert("Please select a filter option.");
+    }
+});
+
+// Clear Filter
+clearFilterBtn.addEventListener("click", () => {
+    // Reset the filter form and view
+    filterForm.reset();
+    view(); // Show all books again
+});
 
 view();
 
