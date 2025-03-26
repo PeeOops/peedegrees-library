@@ -24,7 +24,7 @@ let bookId = 0;
 
 // Book Constructor
 
-function Book(author, title, tagline,pages) {
+function Book(author, title, tagline,pages,read) {
     if(!new.target){
         throw Error("You must use the new operator to call the constructor");
     }
@@ -34,11 +34,12 @@ function Book(author, title, tagline,pages) {
     this.title = title;
     this.tagline = tagline;
     this.pages = pages;
+    this.read = false;
 }
 
 // New Book
-function addBookToLibrary (author, title, tagline, pages) {
-    const newBook = new Book(author, title, tagline, pages);
+function addBookToLibrary (author, title, tagline, pages, read) {
+    const newBook = new Book(author, title, tagline, pages, read);
     myLibrary.push(newBook);
 }
 
@@ -54,9 +55,16 @@ inputForm.addEventListener("submit", (event) => {
     const title = document.getElementById("title");
     const tagline = document.getElementById("tagline");
     const pages = document.getElementById("pages");
+    const read = false;
+
+    // Validate input
+    if(!author || !title || !tagline || isNaN(pages)){
+        alert("Please fill out all fields correcty.");
+        return;
+    }
 
     // Add Book
-    addBookToLibrary(author.value, title.value, tagline.value, pages.value);
+    addBookToLibrary(author.value, title.value, tagline.value, parseInt(pages.value), read);
 
     // Clear input values
     author.value = "";
@@ -73,16 +81,16 @@ inputForm.addEventListener("submit", (event) => {
 })
 
 // Temporary Listed Books
-addBookToLibrary("J.K. Rowling", "Harry Potter and the Sorcerer's Stone", "The magic begins.", 309);
-addBookToLibrary("George Orwell", "1984", "Big Brother is watching.", 328);
-addBookToLibrary("J.R.R. Tolkien", "The Hobbit", "In a hole in the ground there lived a hobbit.", 310);
-addBookToLibrary("Jane Austen", "Pride and Prejudice", "It is a truth universally acknowledged, that a single man in possession of a good fortune, must be in want of a wife.", 279);
-addBookToLibrary("F. Scott Fitzgerald", "The Great Gatsby", "In the end, we will remember not the words of our enemies, but the silence of our friends.", 180);
-addBookToLibrary("Harper Lee", "To Kill a Mockingbird", "You never really understand a person until you consider things from his point of view.", 281);
-addBookToLibrary("Mark Twain", "The Adventures of Huckleberry Finn", "A story of a boy and a runaway slave on a journey down the Mississippi River.", 366);
-addBookToLibrary("Suzanne Collins", "The Hunger Games", "May the odds be ever in your favor.", 374);
-addBookToLibrary("Ernest Hemingway", "The Old Man and the Sea", "A story of courage, endurance, and friendship with the sea.", 127);
-addBookToLibrary("Stephen King", "The Shining", "All work and no play makes Jack a dull boy.", 659);
+addBookToLibrary("J.K. Rowling", "Harry Potter and the Sorcerer's Stone", "The magic begins.", 309, false);
+addBookToLibrary("George Orwell", "1984", "Big Brother is watching.", 328, false);
+addBookToLibrary("J.R.R. Tolkien", "The Hobbit", "In a hole in the ground there lived a hobbit.", 310, false);
+addBookToLibrary("Jane Austen", "Pride and Prejudice", "It is a truth universally acknowledged, that a single man in possession of a good fortune, must be in want of a wife.", 279, false);
+addBookToLibrary("F. Scott Fitzgerald", "The Great Gatsby", "In the end, we will remember not the words of our enemies, but the silence of our friends.", 180, false);
+addBookToLibrary("Harper Lee", "To Kill a Mockingbird", "You never really understand a person until you consider things from his point of view.", 281, false);
+addBookToLibrary("Mark Twain", "The Adventures of Huckleberry Finn", "A story of a boy and a runaway slave on a journey down the Mississippi River.", 366, false);
+addBookToLibrary("Suzanne Collins", "The Hunger Games", "May the odds be ever in your favor.", 374, false);
+addBookToLibrary("Ernest Hemingway", "The Old Man and the Sea", "A story of courage, endurance, and friendship with the sea.", 127, false);
+addBookToLibrary("Stephen King", "The Shining", "All work and no play makes Jack a dull boy.", 659, false);
 
 
 
@@ -115,23 +123,37 @@ function view() {
                     <p>${myLibrary[i].tagline}</p>
                     <p>${myLibrary[i].pages}</p>
                 </div>
-                <button class="zoom-button">Read</button>
+                <div class="zoom-button">
+                    <button id="read-button-${myLibrary[i].bookId}">Read</button>
+                    <button id="delete-button-${myLibrary[i].bookId}">Delete</button>
+                </div>
             `;
 
             // Append the book div to the current "first" div
             firstDiv.appendChild(bookDiv);
+
+            // Read Button
+            const readButton = document.getElementById(`read-button-${myLibrary[i].bookId}`);
+            readButton.addEventListener("click", () => {
+                if(myLibrary[i].read === false){
+                    myLibrary[i].read = true;
+                    readButton.innerText = "Unread";
+                }else{
+                    myLibrary[i].read = false;
+                    readButton.innerText = "Read";
+                }
+            })
+
+            
         }
     }
+
+
+
+
 }
 
 view();
-
-
-// Filter Books
-
-// Clear Books Filter
-
-// Read and Unread Books
 
 
 

@@ -129,6 +129,11 @@ body{
 }
 
 .zoom-button {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
     position: absolute;
     top: 50%;
     left: 50%;
@@ -136,13 +141,22 @@ body{
     opacity: 0;
     visibility: hidden;
     transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
-    padding: 20px 30px;
+    padding: 15px 20px;
     background-color: var(--khaki);
     color: var(--dark-brown);
     font-weight: bold;
     border: none;
     border-radius: 5px;
+}
+
+.zoom-button button{
+    background-color: var(--seashell);
+    color: var(--dark-brown);
+    border: none;
+    padding: 5px 10px;
+    font-family: "Gidole", sans-serif;
     cursor: pointer;
+    border-radius: 5px;
 }
 
 .zoom:hover .zoom-div {
