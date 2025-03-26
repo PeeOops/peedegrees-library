@@ -144,7 +144,13 @@ function view() {
                 }
             })
 
-            
+            // Delete Button
+            const deleteButton = document.getElementById(`delete-button-${myLibrary[i].bookId}`);
+            deleteButton.addEventListener("click", () => {
+                const bookIndex = myLibrary.findIndex(book => book.bookId === myLibrary[i].bookId);
+                myLibrary.splice(bookIndex,1);
+                view();
+            })
         }
     }
 
